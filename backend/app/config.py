@@ -11,6 +11,7 @@ class Settings(BaseSettings):
         env_file=".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
+        extra="ignore", # Change from forbid to ignore to be safer
     )
 
     # Application
@@ -57,13 +58,17 @@ class Settings(BaseSettings):
             return v
         return ["*"]
 
-    # Email (Gmail SMTP)
-    SMTP_HOST: str = "smtp.gmail.com"
-    SMTP_PORT: int = 587
-    SMTP_USER: str = ""
-    SMTP_PASSWORD: str = ""
+    # Email
+    EMAIL_HOST: str = "smtp.gmail.com"
+    EMAIL_PORT: int = 587
+    EMAIL_USERNAME: str = ""
+    EMAIL_PASSWORD: str = ""
     EMAIL_FROM: str = "noreply@khanalmilan.com.np"
     EMAIL_FROM_NAME: str = "Milan Khanal"
+
+    # Profile Extra
+    MILAN_DOB: str = "2000-01-01"
+    PORT: int = 8000
 
     # Cloudinary
     CLOUDINARY_CLOUD_NAME: str = ""

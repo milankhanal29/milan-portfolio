@@ -26,7 +26,7 @@ async def submit_contact(
     msg = await create_record(db, ContactMessage, data.model_dump())
 
     # Send notification email to Milan in the background
-    if settings.SMTP_USER:
+    if settings.EMAIL_USERNAME:
         html = build_contact_notification_html(data.name, data.email, data.subject or "", data.message)
         background_tasks.add_task(
             send_email, settings.ADMIN_EMAIL, f"New Contact: {data.subject or 'No Subject'}", html

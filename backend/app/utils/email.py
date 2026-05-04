@@ -15,9 +15,9 @@ async def send_email(
     text_body: Optional[str] = None,
 ) -> bool:
     """Send an email via SMTP. Returns True on success."""
-    if not settings.SMTP_USER or not settings.SMTP_PASSWORD:
+    if not settings.EMAIL_USERNAME or not settings.EMAIL_PASSWORD:
         # Email not configured, log and skip
-        print(f"[EMAIL] Skipping email to {to_email} — SMTP not configured")
+        print(f"[EMAIL] Skipping email to {to_email} — Email not configured")
         return False
 
     try:
@@ -30,9 +30,9 @@ async def send_email(
             msg.attach(MIMEText(text_body, "plain"))
         msg.attach(MIMEText(html_body, "html"))
 
-        with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
+        with smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
             server.starttls()
-            server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
+            server.login(settings.EMAIL_USERNAME, settings.EMAIL_PASSWORD)
             server.send_message(msg)
 
         print(f"[EMAIL] Sent to {to_email}: {subject}")
