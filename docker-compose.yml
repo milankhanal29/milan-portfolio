@@ -75,6 +75,19 @@ services:
       - redis
     restart: always
 
+  # Frontend Next.js App
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: portfolio_frontend
+    restart: always
+    environment:
+      - NEXT_PUBLIC_API_URL=https://milan-portfolio-api.up.railway.app/api/v1 # Update this if using local Nginx
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+
   # Nginx Reverse Proxy
   nginx:
     image: nginx:alpine
@@ -85,6 +98,7 @@ services:
       - "80:80"
     depends_on:
       - api
+      - frontend
     restart: always
 
 volumes:
