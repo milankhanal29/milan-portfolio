@@ -1,0 +1,67 @@
+"""Application configuration using Pydantic Settings."""
+
+from typing import List
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+    )
+
+    # Application
+    APP_NAME: str = "Milan Khanal Portfolio API"
+    APP_VERSION: str = "1.0.0"
+    DEBUG: bool = False
+
+    # Database
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/portfolio_db"
+    DATABASE_URL_DIRECT: str = "postgresql://postgres:postgres@localhost:5432/portfolio_db"
+
+    # Redis
+    REDIS_URL: str = "redis://localhost:6379/0"
+    CACHE_TTL: int = 300  # 5 minutes default
+
+    # JWT
+    SECRET_KEY: str = "super-secret-key-change-in-production"
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+
+    # Admin
+    ADMIN_EMAIL: str = "admin@khanalmilan.com.np"
+    ADMIN_PASSWORD: str = "changeme123"
+
+    # CORS
+    ALLOWED_ORIGINS: List[str] = [
+        "http://localhost:3000",
+        "https://khanalmilan.com.np",
+        "https://birthday.khanalmilan.com.np",
+    ]
+
+    # Email (Gmail SMTP)
+    SMTP_HOST: str = "smtp.gmail.com"
+    SMTP_PORT: int = 587
+    SMTP_USER: str = ""
+    SMTP_PASSWORD: str = ""
+    EMAIL_FROM: str = "noreply@khanalmilan.com.np"
+    EMAIL_FROM_NAME: str = "Milan Khanal"
+
+    # Cloudinary
+    CLOUDINARY_CLOUD_NAME: str = ""
+    CLOUDINARY_API_KEY: str = ""
+    CLOUDINARY_API_SECRET: str = ""
+    USE_CLOUDINARY: bool = False
+
+    # Rate Limiting
+    RATE_LIMIT_TIMES: int = 100
+    RATE_LIMIT_SECONDS: int = 60
+
+    # Celery
+    CELERY_BROKER_URL: str = "redis://localhost:6379/1"
+    CELERY_RESULT_BACKEND: str = "redis://localhost:6379/2"
+
+
+settings = Settings()

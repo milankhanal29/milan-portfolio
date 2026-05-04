@@ -1,0 +1,11 @@
+.env
+.env.*
+node_modules/
+__pycache__/
+venv/
+.next/
+uploads/
+*.log
+repo.json
+LAUNCH.md
+DEVELOPMENT.md
