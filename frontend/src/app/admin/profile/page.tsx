@@ -43,7 +43,7 @@ export default function AdminProfilePage() {
             <label className="block text-sm font-medium mb-1.5">{f.label}</label>
             {f.type === "textarea" ? (
               <textarea
-                defaultValue={(profile as Record<string, string>)?.[f.key] || ""}
+                defaultValue={(profile as unknown as Record<string, string>)?.[f.key] || ""}
                 onChange={e => setForm(prev => ({ ...prev, [f.key]: e.target.value }))}
                 rows={4}
                 className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--secondary))] border border-[hsl(var(--border))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))] resize-none"
@@ -51,7 +51,7 @@ export default function AdminProfilePage() {
             ) : (
               <input
                 type={f.type}
-                defaultValue={(profile as Record<string, string>)?.[f.key] || ""}
+                defaultValue={(profile as unknown as Record<string, string>)?.[f.key] || ""}
                 onChange={e => setForm(prev => ({ ...prev, [f.key]: e.target.value }))}
                 className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--secondary))] border border-[hsl(var(--border))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))]"
               />
