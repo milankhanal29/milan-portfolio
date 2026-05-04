@@ -37,7 +37,7 @@ class Settings(BaseSettings):
     ADMIN_PASSWORD: str = "changeme123"
 
     # CORS
-    ALLOWED_ORIGINS: List[str] = [
+    ALLOWED_ORIGINS: Union[str, List[str]] = [
         "http://localhost:3000",
         "https://khanalmilan.com.np",
         "https://birthday.khanalmilan.com.np",
