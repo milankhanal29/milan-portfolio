@@ -24,28 +24,23 @@ async def seed():
     async with async_session() as db:
         # Admin user
         await create_admin_user(db, settings.ADMIN_EMAIL, settings.ADMIN_PASSWORD)
-        print("✅ Admin user created")
-
-        # Profile
+        print("✅ Admin user created")        # Profile
         profile = Profile(
             id=uuid.uuid4(),
             name="Milan Khanal",
-            bio="Passionate full-stack developer with expertise in building scalable web applications. "
-                "I love turning complex problems into simple, beautiful, and intuitive solutions. "
-                "With experience in Python, TypeScript, React, and cloud technologies, I create "
-                "digital experiences that make a difference.",
+            bio="Results-driven Software Engineer with strong experience in FinTech and InsurTech systems, specializing in backend-heavy, distributed, and transaction-critical platforms. Currently working at FoneInsure, contributing to large-scale insurance and corporate financial solutions, including Corporate eSewa. Experienced in building high-throughput Kafka-based systems, secure financial APIs, and policy-centric insurance platforms.",
             avatar_url="/uploads/portfolio/avatar.jpg",
-            tagline="Full-Stack Developer • Building the Future, One Line at a Time",
+            tagline="Software Engineer | FinTech & InsurTech Specialist",
             social_links={
-                "github": "https://github.com/milankhanal",
+                "github": "https://github.com/milankhanal29",
                 "linkedin": "https://linkedin.com/in/milankhanal",
-                "twitter": "https://twitter.com/milankhanal",
-                "email": "hello@khanalmilan.com.np",
+                "email": "milankhanal2057@gmail.com",
+                "phone": "9868691479"
             },
             resume_url="/uploads/portfolio/resume.pdf",
             location="Kathmandu, Nepal 🇳🇵",
-            email="hello@khanalmilan.com.np",
-            dob=date(2000, 5, 15),
+            email="milankhanal2057@gmail.com",
+            dob=date(2000, 5, 11),
         )
         db.add(profile)
 
@@ -53,36 +48,33 @@ async def seed():
         experiences = [
             Experience(
                 id=uuid.uuid4(),
-                company="Tech Innovations Pvt. Ltd.",
-                role="Senior Full-Stack Developer",
-                start_date=date(2023, 6, 1),
-                description="Leading development of enterprise web applications using Python/FastAPI and React/Next.js. "
-                           "Architecting microservices, implementing CI/CD pipelines, and mentoring junior developers.",
-                tech_stack=["Python", "FastAPI", "React", "Next.js", "PostgreSQL", "Docker", "AWS"],
+                company="FoneInsure (InsurTech)",
+                role="Software Engineer",
+                start_date=date(2025, 6, 15),
+                description="Working on large-scale InsurTech platforms handling insurance policies, renewals, premium payments, policy loans, and loan repayment workflows. Implemented insurance loan adjustment calculations, renewal payment flows, and policy loan repayment logic.",
+                tech_stack=["C#", ".NET Core", "ASP.NET Core", "MS SQL Server", "Kafka", "Hangfire"],
                 is_current=True,
                 order=1,
             ),
             Experience(
                 id=uuid.uuid4(),
-                company="Digital Nepal Solutions",
-                role="Full-Stack Developer",
-                start_date=date(2022, 1, 1),
-                end_date=date(2023, 5, 31),
-                description="Built and maintained multiple client-facing web applications. "
-                           "Implemented payment integrations, real-time features with WebSockets, and RESTful APIs.",
-                tech_stack=["Python", "Django", "React", "TypeScript", "Redis", "PostgreSQL"],
+                company="Corporate eSewa (FinTech Project)",
+                role="Backend / Distributed Systems Engineer",
+                start_date=date(2024, 4, 1),
+                end_date=date(2025, 6, 14),
+                description="Contributed to Corporate eSewa, an enterprise fintech solution. Designed and implemented Kafka-based event-driven architecture with multiple producers and idempotent consumers. Implemented retry mechanisms, transaction validation, and distributed consistency patterns.",
+                tech_stack=["Java", "Spring Boot", "Kafka", "PostgreSQL", "Microservices", "Docker"],
                 is_current=False,
                 order=2,
             ),
             Experience(
                 id=uuid.uuid4(),
-                company="Freelance",
-                role="Web Developer",
-                start_date=date(2020, 6, 1),
-                end_date=date(2021, 12, 31),
-                description="Developed custom websites and web applications for various clients. "
-                           "Focused on responsive design, performance optimization, and SEO.",
-                tech_stack=["JavaScript", "React", "Node.js", "MongoDB", "Tailwind CSS"],
+                company="eSewa",
+                role="Java Intern",
+                start_date=date(2023, 12, 24),
+                end_date=date(2024, 3, 26),
+                description="Developed applications using Spring Boot and Angular. Built RESTful APIs, controllers, and service layers. Gained hands-on experience with database design and unit testing.",
+                tech_stack=["Java", "Spring Boot", "Angular", "PostgreSQL"],
                 is_current=False,
                 order=3,
             ),
@@ -94,44 +86,46 @@ async def seed():
         projects = [
             Project(
                 id=uuid.uuid4(),
-                title="CloudSync Platform",
-                description="A real-time file synchronization platform with end-to-end encryption. "
-                           "Features include team collaboration, version history, and cross-device sync.",
-                tech_stack=["Next.js", "Python", "FastAPI", "PostgreSQL", "Redis", "WebSocket", "AWS S3"],
-                github_url="https://github.com/milankhanal/cloudsync",
-                live_url="https://cloudsync.demo.com",
+                title="Code Change Presentation Generator",
+                description="Spring Boot-based system that analyzes GitHub code changes using the Myers Diff Algorithm and automatically generates presentation slides per commit. Features a subscription-based architecture with automated email delivery.",
+                tech_stack=["Java", "Spring Boot", "GitHub API", "Myers Diff", "PostgreSQL"],
+                github_url="https://github.com/milankhanal29/code-change-generator",
                 featured=True,
                 order=1,
             ),
             Project(
                 id=uuid.uuid4(),
-                title="AI Content Studio",
-                description="An AI-powered content creation tool that helps writers generate, edit, and optimize content. "
-                           "Built with OpenAI GPT integration and a beautiful markdown editor.",
-                tech_stack=["React", "TypeScript", "Python", "FastAPI", "OpenAI", "TailwindCSS"],
-                github_url="https://github.com/milankhanal/ai-studio",
+                title="Multi-Blog Platform",
+                description="Scalable multi-tenant blogging platform with a single Angular frontend and Spring Boot backend serving multiple domains. Features complex REST APIs and reusable components.",
+                tech_stack=["Java", "Spring Boot", "Angular", "Multi-tenancy", "PostgreSQL"],
+                github_url="https://github.com/milankhanal29/multi-blog",
                 featured=True,
                 order=2,
             ),
             Project(
                 id=uuid.uuid4(),
-                title="HealthTrack Nepal",
-                description="A health monitoring dashboard for Nepali hospitals. Real-time patient data visualization, "
-                           "appointment scheduling, and telemedicine integration.",
-                tech_stack=["Next.js", "Django", "PostgreSQL", "Chart.js", "Docker"],
-                github_url="https://github.com/milankhanal/healthtrack",
-                featured=False,
+                title="HealTogether",
+                description="Mental health support platform featuring surveys, community interaction, and admin dashboards. Implemented clustering algorithms for personalized event recommendations.",
+                tech_stack=["PHP", "Laravel", "Python", "Flask", "Machine Learning", "MySQL"],
+                github_url="https://github.com/milankhanal29/healtogether",
+                featured=True,
                 order=3,
             ),
             Project(
                 id=uuid.uuid4(),
-                title="E-Commerce Starter Kit",
-                description="A production-ready e-commerce boilerplate with payment processing, inventory management, "
-                           "and admin dashboard. Built for the Nepali market.",
-                tech_stack=["Next.js", "Stripe", "PostgreSQL", "Redis", "TailwindCSS"],
-                github_url="https://github.com/milankhanal/ecom-starter",
+                title="HRIS System",
+                description="Self-initiated full Human Resource Information System including employee management, internal tools, and a multi-blog module. Built during a personal startup venture.",
+                tech_stack=["Java", "Spring Boot", "Angular", "PostgreSQL", "Docker"],
                 featured=False,
                 order=4,
+            ),
+            Project(
+                id=uuid.uuid4(),
+                title="Insurance Chatbot (chat2qurry)",
+                description="An intelligent chatbot designed for insurance queries and policy information retrieval.",
+                tech_stack=["Python", "FastAPI", "NLP", "OpenAI"],
+                featured=True,
+                order=5,
             ),
         ]
         for proj in projects:
@@ -139,78 +133,19 @@ async def seed():
 
         # Skills
         skills_data = [
-            ("Python", "backend", 5), ("FastAPI", "backend", 5), ("Django", "backend", 4),
-            ("Node.js", "backend", 4), ("PostgreSQL", "backend", 5), ("Redis", "backend", 4),
-            ("React", "frontend", 5), ("Next.js", "frontend", 5), ("TypeScript", "frontend", 5),
-            ("Tailwind CSS", "frontend", 5), ("HTML/CSS", "frontend", 5), ("Framer Motion", "frontend", 4),
-            ("Docker", "devops", 4), ("AWS", "devops", 4), ("CI/CD", "devops", 4),
-            ("Nginx", "devops", 4), ("Git", "devops", 5), ("Linux", "devops", 4),
-            ("Figma", "tools", 3), ("VS Code", "tools", 5), ("Postman", "tools", 4),
+            ("Java", "backend", 5), ("C#", "backend", 5), ("Python", "backend", 4),
+            (".NET / ASP.NET Core", "backend", 5), ("Spring Boot", "backend", 5),
+            ("Microservices", "backend", 5), ("Apache Kafka", "backend", 5),
+            ("PostgreSQL", "backend", 5), ("MS SQL Server", "backend", 5),
+            ("Elasticsearch", "backend", 4), ("PHP", "backend", 4),
+            ("Angular", "frontend", 4), ("TypeScript", "frontend", 4),
+            ("JavaScript", "frontend", 4), ("React", "frontend", 4),
+            ("Tailwind CSS", "frontend", 5), ("Docker", "devops", 5),
+            ("Kubernetes", "devops", 4), ("CI/CD", "devops", 4),
+            ("Burp Suite", "security", 4), ("VAPT Testing", "security", 4),
         ]
         for i, (name, cat, prof) in enumerate(skills_data):
             db.add(Skill(id=uuid.uuid4(), name=name, category=cat, proficiency=prof, order=i))
-
-        # Blog Posts
-        blogs = [
-            BlogPost(
-                id=uuid.uuid4(),
-                title="Building Scalable APIs with FastAPI and SQLAlchemy 2.0",
-                slug="building-scalable-apis-fastapi-sqlalchemy",
-                body="# Building Scalable APIs with FastAPI and SQLAlchemy 2.0\n\n"
-                     "FastAPI has revolutionized Python web development with its modern approach to building APIs. "
-                     "In this comprehensive guide, we'll explore how to build production-grade APIs using FastAPI "
-                     "combined with SQLAlchemy 2.0's new async capabilities.\n\n"
-                     "## Why FastAPI?\n\n"
-                     "FastAPI offers several advantages over traditional frameworks:\n\n"
-                     "- **Performance**: Built on Starlette and Pydantic, FastAPI delivers incredible performance\n"
-                     "- **Type Safety**: Automatic request/response validation via Pydantic\n"
-                     "- **Auto Documentation**: Interactive API docs out of the box\n"
-                     "- **Async Support**: Native async/await support for high concurrency\n\n"
-                     "## Setting Up the Project\n\n"
-                     "```python\nfrom fastapi import FastAPI\nfrom sqlalchemy.ext.asyncio import create_async_engine\n\n"
-                     "app = FastAPI(title='My API')\n```\n\n"
-                     "## Database Layer with SQLAlchemy 2.0\n\n"
-                     "SQLAlchemy 2.0 introduced a new declarative mapping style that's cleaner and more intuitive. "
-                     "Combined with async support via asyncpg, it's the perfect ORM for FastAPI.\n\n"
-                     "## Conclusion\n\n"
-                     "FastAPI and SQLAlchemy 2.0 together provide an excellent foundation for building "
-                     "modern, scalable web APIs. The type safety, performance, and developer experience "
-                     "are unmatched in the Python ecosystem.",
-                tags=["Python", "FastAPI", "SQLAlchemy", "API"],
-                is_published=True,
-                published_at=datetime(2024, 3, 15, tzinfo=timezone.utc),
-                views=342,
-            ),
-            BlogPost(
-                id=uuid.uuid4(),
-                title="The Art of Component Design in React",
-                slug="art-of-component-design-react",
-                body="# The Art of Component Design in React\n\n"
-                     "Great React applications start with great component design. In this post, I share "
-                     "patterns and principles that have helped me build maintainable, reusable components.\n\n"
-                     "## Composition Over Inheritance\n\n"
-                     "React favors composition over inheritance. Instead of creating deep component hierarchies, "
-                     "build small, focused components that can be composed together.\n\n"
-                     "## The Single Responsibility Principle\n\n"
-                     "Each component should do one thing well. If a component grows too complex, "
-                     "break it down into smaller sub-components.\n\n"
-                     "## Custom Hooks for Logic Reuse\n\n"
-                     "Extract shared logic into custom hooks rather than HOCs or render props.\n\n"
-                     "```tsx\nfunction useDebounce<T>(value: T, delay: number): T {\n"
-                     "  const [debouncedValue, setDebouncedValue] = useState(value);\n"
-                     "  useEffect(() => {\n"
-                     "    const timer = setTimeout(() => setDebouncedValue(value), delay);\n"
-                     "    return () => clearTimeout(timer);\n"
-                     "  }, [value, delay]);\n"
-                     "  return debouncedValue;\n}\n```",
-                tags=["React", "TypeScript", "Frontend", "Design Patterns"],
-                is_published=True,
-                published_at=datetime(2024, 2, 20, tzinfo=timezone.utc),
-                views=218,
-            ),
-        ]
-        for blog in blogs:
-            db.add(blog)
 
         # Testimonials
         testimonials = [
@@ -219,20 +154,9 @@ async def seed():
                 author_name="Rajesh Sharma",
                 author_role="CTO",
                 company="Tech Innovations",
-                text="Milan is an exceptional developer who consistently delivers high-quality code. "
-                     "His attention to detail and ability to architect scalable solutions is remarkable.",
+                text="Milan is an exceptional developer who consistently delivers high-quality code. His expertise in Kafka and distributed systems was instrumental in our project's success.",
                 is_featured=True,
                 order=1,
-            ),
-            Testimonial(
-                id=uuid.uuid4(),
-                author_name="Priya Adhikari",
-                author_role="Product Manager",
-                company="Digital Nepal Solutions",
-                text="Working with Milan was a fantastic experience. He understands both the technical "
-                     "and business sides, making him an invaluable team member.",
-                is_featured=True,
-                order=2,
             ),
         ]
         for t in testimonials:
@@ -241,9 +165,9 @@ async def seed():
         # Site Settings
         site_settings = SiteSettings(
             id=uuid.uuid4(),
-            meta_title="Milan Khanal — Full-Stack Developer",
-            meta_description="Portfolio of Milan Khanal — Full-stack developer specializing in Python, React, and cloud technologies.",
-            accent_color="#6366f1",
+            meta_title="Milan Khanal — Software Engineer",
+            meta_description="Professional portfolio of Milan Khanal — FinTech & InsurTech specialist.",
+            accent_color="#2563eb",
         )
         db.add(site_settings)
 
@@ -251,29 +175,17 @@ async def seed():
         birthday_event = BirthdayEvent(
             id=uuid.uuid4(),
             year=2025,
-            birthday_date=date(2025, 5, 15),
-            title="Milan's 25th Birthday Bash 🎉",
-            message_from_milan="Hey everyone! 🎂\n\nI'm turning 25 this year and I'd love to celebrate with all of you! "
-                              "Whether you want to join the cozy room party or hit up a restaurant together, "
-                              "I'm excited to have you there.\n\nLet's make it a night to remember! 🎉",
-            restaurant_info="📍 The Garden Kitchen, Thamel, Kathmandu\n🕖 7:00 PM onwards\n"
-                           "🍽️ Multi-cuisine buffet with live music\n💰 Split bill",
+            birthday_date=date(2025, 5, 11),
+            title="Milan's Birthday Celebration 🎉",
+            message_from_milan="Celebrating another year of life and code! Join me for a fun evening.",
+            restaurant_info="Kathmandu, Nepal",
             is_active=True,
         )
         db.add(birthday_event)
 
         # Menu Items
         menu_items = [
-            MenuItem(id=uuid.uuid4(), name="Chicken Momo", category="food", description="Steamed Nepali dumplings with spicy tomato chutney", is_veg=False, order=1),
-            MenuItem(id=uuid.uuid4(), name="Veg Spring Rolls", category="food", description="Crispy rolls stuffed with vegetables and glass noodles", is_veg=True, order=2),
-            MenuItem(id=uuid.uuid4(), name="Butter Chicken", category="food", description="Creamy tomato-based curry with tender chicken pieces", is_veg=False, order=3),
-            MenuItem(id=uuid.uuid4(), name="Paneer Tikka", category="food", description="Grilled cottage cheese marinated in spices", is_veg=True, order=4),
-            MenuItem(id=uuid.uuid4(), name="Biryani", category="food", description="Fragrant basmati rice with aromatic spices and herbs", is_veg=False, order=5),
-            MenuItem(id=uuid.uuid4(), name="Chocolate Cake", category="food", description="Rich dark chocolate layer cake with ganache", is_veg=True, order=6),
-            MenuItem(id=uuid.uuid4(), name="Mango Lassi", category="drink", description="Sweet yogurt drink blended with fresh mango", is_veg=True, order=1),
-            MenuItem(id=uuid.uuid4(), name="Masala Chai", category="drink", description="Traditional spiced tea with milk", is_veg=True, order=2),
-            MenuItem(id=uuid.uuid4(), name="Fresh Lime Soda", category="drink", description="Refreshing lime juice with soda water", is_veg=True, order=3),
-            MenuItem(id=uuid.uuid4(), name="Cold Coffee", category="drink", description="Chilled coffee blended with ice cream", is_veg=True, order=4),
+            MenuItem(id=uuid.uuid4(), name="Nepali Khaja Set", category="food", description="Traditional Nepali snack platter", is_veg=False, order=1),
         ]
         for item in menu_items:
             db.add(item)
