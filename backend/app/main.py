@@ -29,6 +29,17 @@ async def lifespan(app: FastAPI):
         await create_admin_user(db, settings.ADMIN_EMAIL, settings.ADMIN_PASSWORD)
         print(f"✅ Admin user ensured: {settings.ADMIN_EMAIL}")
 
+        # Ensure seed data if profile is missing
+        from app.services.profile_service import get_profile
+        profile = await get_profile(db)
+        if not profile:
+            print("🌱 No profile found, seeding database...")
+            from seed import seed as seed_db
+            # We need to run seed_db() but it also calls init_db and creates its own session
+            # For simplicity, we'll just call it.
+            await seed_db()
+            print("✅ Database seeded successfully")
+
     yield
 
     # Shutdown
