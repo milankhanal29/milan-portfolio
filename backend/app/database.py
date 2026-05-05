@@ -15,7 +15,11 @@ engine = create_async_engine(
     pool_size=20,
     max_overflow=10,
     pool_pre_ping=True,
-    connect_args={"ssl": "require"} if "localhost" not in settings.DATABASE_URL else {}
+    connect_args=(
+        {"ssl": "require"} 
+        if "localhost" not in settings.DATABASE_URL and ".railway.internal" not in settings.DATABASE_URL 
+        else {}
+    )
 )
 
 async_session = async_sessionmaker(
