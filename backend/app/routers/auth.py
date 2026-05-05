@@ -1,6 +1,6 @@
 """Authentication router — login, refresh, logout, me."""
 
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.dependencies import get_db, get_current_user
@@ -30,23 +30,29 @@ async def login(
     tokens = await create_tokens(user)
 
     # Set httpOnly cookies
+    cookie_settings = {
+        "httponly": True,
+        "secure": not settings.DEBUG,
+        "samesite": "lax" if settings.DEBUG else "none",
+        "path": "/",
+    }
+
     response.set_cookie(
         key="access_token",
         value=tokens["access_token"],
-        httponly=True,
-        secure=not settings.DEBUG,
-        samesite="lax",
         max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
-        path="/",
+        **cookie_settings
     )
+    
+    # Refresh token cookie should be limited to /auth/refresh
+    refresh_cookie_settings = cookie_settings.copy()
+    refresh_cookie_settings["path"] = "/api/v1/auth/refresh"
+
     response.set_cookie(
         key="refresh_token",
         value=tokens["refresh_token"],
-        httponly=True,
-        secure=not settings.DEBUG,
-        samesite="lax",
         max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 86400,
-        path="/auth/refresh",
+        **refresh_cookie_settings
     )
 
     return TokenResponse(access_token=tokens["access_token"])
@@ -56,10 +62,9 @@ async def login(
 async def refresh_token(
     response: Response,
     db: AsyncSession = Depends(get_db),
-    refresh_token: str | None = None,
+    refresh_token: str | None = Cookie(None),
 ):
     """Refresh the access token using the refresh token from cookie."""
-    from fastapi import Cookie
     # Note: refresh_token comes from cookie path /auth/refresh
     if not refresh_token:
         raise HTTPException(status_code=401, detail="No refresh token")
@@ -82,7 +87,7 @@ async def refresh_token(
         value=tokens["access_token"],
         httponly=True,
         secure=not settings.DEBUG,
-        samesite="lax",
+        samesite="lax" if settings.DEBUG else "none",
         max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         path="/",
     )
@@ -93,8 +98,18 @@ async def refresh_token(
 @router.post("/logout")
 async def logout(response: Response):
     """Clear authentication cookies."""
-    response.delete_cookie("access_token", path="/")
-    response.delete_cookie("refresh_token", path="/auth/refresh")
+    response.delete_cookie(
+        "access_token", 
+        path="/",
+        secure=not settings.DEBUG,
+        samesite="lax" if settings.DEBUG else "none",
+    )
+    response.delete_cookie(
+        "refresh_token", 
+        path="/api/v1/auth/refresh",
+        secure=not settings.DEBUG,
+        samesite="lax" if settings.DEBUG else "none",
+    )
     return {"message": "Logged out successfully"}
 
 
