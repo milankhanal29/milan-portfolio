@@ -88,10 +88,42 @@ def create_app() -> FastAPI:
     async def add_request_id(request: Request, call_next):
         request_id = str(uuid.uuid4())[:8]
         start_time = time.time()
-        response = await call_next(request)
-        duration = round((time.time() - start_time) * 1000, 2)
-        response.headers["X-Request-ID"] = request_id
-        print(f"[{request_id}] {request.method} {request.url.path} → {response.status_code} ({duration}ms)")
+        try:
+            response = await call_next(request)
+            duration = round((time.time() - start_time) * 1000, 2)
+            response.headers["X-Request-ID"] = request_id
+            # Don't log health checks to keep logs clean
+            if request.url.path != "/health":
+                print(f"[{request_id}] {request.method} {request.url.path} → {response.status_code} ({duration}ms)")
+            return response
+        except Exception as e:
+            duration = round((time.time() - start_time) * 1000, 2)
+            print(f"[{request_id}] ❌ CRASH: {request.method} {request.url.path} → {str(e)} ({duration}ms)")
+            import traceback
+            traceback.print_exc()
+            raise # Re-raise to be caught by global handler
+
+    # Global exception handler to ensure CORS headers on 500 errors
+    from fastapi.responses import JSONResponse
+    @app.exception_handler(Exception)
+    async def global_exception_handler(request: Request, exc: Exception):
+        print(f"🔥 Global exception caught: {str(exc)}")
+        import traceback
+        traceback.print_exc()
+        
+        response = JSONResponse(
+            status_code=500,
+            content={"detail": "Internal Server Error", "error": str(exc) if settings.DEBUG else None},
+        )
+        
+        # Manually add CORS headers if the origin is allowed
+        origin = request.headers.get("origin")
+        if origin in settings.ALLOWED_ORIGINS or "*" in settings.ALLOWED_ORIGINS:
+            response.headers["Access-Control-Allow-Origin"] = origin
+            response.headers["Access-Control-Allow-Credentials"] = "true"
+            response.headers["Access-Control-Allow-Methods"] = "*"
+            response.headers["Access-Control-Allow-Headers"] = "*"
+            
         return response
 
     # Static files for local uploads
