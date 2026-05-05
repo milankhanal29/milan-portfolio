@@ -50,7 +50,7 @@ export default function HomePage() {
                 className="mb-4"
               >
                 <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium bg-[hsl(var(--primary)/0.15)] text-[hsl(var(--primary))] border border-[hsl(var(--primary)/0.3)]">
-                  {profile?.location || "Available for work"}
+                  {profile?.location || "Kathmandu, Nepal"}
                 </span>
               </motion.div>
 
@@ -69,7 +69,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-xl sm:text-2xl text-[hsl(var(--muted-foreground))] mb-8 max-w-2xl mx-auto"
               >
-                {profile?.tagline || "Full-Stack Developer • Building the Future"}
+                {profile?.tagline || "Software Engineer | FinTech & InsurTech Specialist"}
               </motion.p>
 
               <motion.div
