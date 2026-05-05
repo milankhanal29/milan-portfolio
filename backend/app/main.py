@@ -21,27 +21,40 @@ async def lifespan(app: FastAPI):
     """Application lifespan — startup and shutdown events."""
     # Startup
     print(f"🚀 Starting {settings.APP_NAME} v{settings.APP_VERSION}")
+    
+    # Log configuration (masked)
+    db_url_masked = settings.DATABASE_URL.split("@")[-1] if "@" in settings.DATABASE_URL else "..."
+    print(f"🔧 DB: ...@{db_url_masked}")
+    print(f"🌍 CORS: {settings.ALLOWED_ORIGINS}")
+    
     await init_db()
     await init_redis()
 
-    # Create admin user from env
-    async with async_session() as db:
-        await create_admin_user(db, settings.ADMIN_EMAIL, settings.ADMIN_PASSWORD)
-        print(f"✅ Admin user ensured: {settings.ADMIN_EMAIL}")
+    # Create admin user and ensure seed data
+    try:
+        async with async_session() as db:
+            await create_admin_user(db, settings.ADMIN_EMAIL, settings.ADMIN_PASSWORD)
+            print(f"✅ Admin user ensured: {settings.ADMIN_EMAIL}")
 
-        # Ensure seed data if profile or projects are missing
-        from app.services.profile_service import get_profile
-        from app.services.crud_service import get_all
-        from app.models.project import Project
-        
-        profile = await get_profile(db)
-        projects = await get_all(db, Project)
-        
-        if not profile or not projects:
-            print("🌱 Missing data, seeding database...")
-            from seed import seed as seed_db
-            await seed_db()
-            print("✅ Database seeded successfully")
+            # Ensure seed data if profile or projects are missing
+            from app.services.profile_service import get_profile
+            from app.services.crud_service import get_all
+            from app.models.project import Project
+            
+            profile = await get_profile(db)
+            projects = await get_all(db, Project)
+            
+            if not profile or not projects:
+                print("🌱 Missing essential data, triggering database seed...")
+                from seed import seed as seed_db
+                await seed_db()
+                print("✅ Database seeded successfully")
+            else:
+                print("ℹ️ Database already contains data, skipping seed.")
+    except Exception as e:
+        print(f"❌ Error during startup/seeding: {str(e)}")
+        import traceback
+        traceback.print_exc()
 
     yield
 

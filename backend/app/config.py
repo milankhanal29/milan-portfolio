@@ -23,9 +23,31 @@ class Settings(BaseSettings):
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/portfolio_db"
     DATABASE_URL_DIRECT: str = "postgresql://postgres:postgres@localhost:5432/portfolio_db"
 
+    @field_validator("DATABASE_URL", mode="before")
+    @classmethod
+    def validate_database_url(cls, v: str) -> str:
+        if not v:
+            return v
+        # Railway provides postgres://, but asyncpg needs postgresql+asyncpg://
+        if v.startswith("postgres://"):
+            return v.replace("postgres://", "postgresql+asyncpg://", 1)
+        if v.startswith("postgresql://") and "+asyncpg" not in v:
+            return v.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return v
+
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
     CACHE_TTL: int = 300  # 5 minutes default
+
+    @field_validator("REDIS_URL", mode="before")
+    @classmethod
+    def validate_redis_url(cls, v: str) -> str:
+        if not v:
+            return "redis://localhost:6379/0"
+        # Ensure it starts with redis:// or rediss:// (SSL)
+        if not v.startswith("redis://") and not v.startswith("rediss://"):
+            return f"redis://{v}"
+        return v
 
     # JWT
     SECRET_KEY: str = "super-secret-key-change-in-production"
@@ -47,16 +69,26 @@ class Settings(BaseSettings):
     @field_validator("ALLOWED_ORIGINS", mode="before")
     @classmethod
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
-        if isinstance(v, str) and not v.startswith("["):
-            return [i.strip() for i in v.split(",")]
-        elif isinstance(v, (list, str)):
-            if isinstance(v, str):
+        if not v or v == "*":
+            # If empty or *, fallback to defaults to avoid crashing with allow_credentials=True
+            return [
+                "http://localhost:3000",
+                "https://khanalmilan.com.np",
+                "https://birthday.khanalmilan.com.np",
+            ]
+        
+        if isinstance(v, str):
+            if v.startswith("["):
                 try:
                     return json.loads(v)
                 except json.JSONDecodeError:
                     return [v]
+            if "," in v:
+                return [i.strip() for i in v.split(",") if i.strip()]
+            return [v.strip()]
+        elif isinstance(v, list):
             return v
-        return ["*"]
+        return ["http://localhost:3000"]
 
     # Email
     EMAIL_HOST: str = "smtp.gmail.com"
