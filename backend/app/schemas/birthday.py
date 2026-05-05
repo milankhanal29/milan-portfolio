@@ -3,6 +3,7 @@
 from datetime import date, datetime
 from typing import List, Optional
 
+from uuid import UUID
 from pydantic import BaseModel, EmailStr
 
 
@@ -27,7 +28,7 @@ class BirthdayEventUpdate(BaseModel):
 
 
 class BirthdayEventResponse(BaseModel):
-    id: str
+    id: UUID
     year: int
     birthday_date: date
     title: str
@@ -70,7 +71,7 @@ class MenuItemUpdate(BaseModel):
 
 
 class MenuItemResponse(BaseModel):
-    id: str
+    id: UUID
     name: str
     category: str
     description: Optional[str] = None
@@ -102,8 +103,8 @@ class RSVPCreate(BaseModel):
 
 
 class RSVPMenuSelectionResponse(BaseModel):
-    id: str
-    menu_item_id: str
+    id: UUID
+    menu_item_id: UUID
     menu_item_name: str
     quantity: int
 
@@ -112,8 +113,8 @@ class RSVPMenuSelectionResponse(BaseModel):
 
 
 class RSVPResponse(BaseModel):
-    id: str
-    event_id: str
+    id: UUID
+    event_id: UUID
     guest_name: str
     guest_email: Optional[str] = None
     party_type: str

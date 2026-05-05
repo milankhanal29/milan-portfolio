@@ -1,6 +1,7 @@
 """Project schemas."""
 
 from datetime import datetime
+from uuid import UUID
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -29,7 +30,7 @@ class ProjectUpdate(BaseModel):
 
 
 class ProjectResponse(BaseModel):
-    id: str
+    id: UUID
     title: str
     description: Optional[str] = None
     tech_stack: List[str] = []

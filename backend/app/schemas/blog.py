@@ -1,6 +1,7 @@
 """Blog/Suggestion schemas."""
 
 from datetime import datetime
+from uuid import UUID
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -25,7 +26,7 @@ class BlogPostUpdate(BaseModel):
 
 
 class BlogPostResponse(BaseModel):
-    id: str
+    id: UUID
     title: str
     slug: str
     body: str
@@ -43,7 +44,7 @@ class BlogPostResponse(BaseModel):
 
 
 class BlogPostListResponse(BaseModel):
-    id: str
+    id: UUID
     title: str
     slug: str
     tags: List[str] = []

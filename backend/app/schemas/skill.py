@@ -1,6 +1,7 @@
 """Skill schemas."""
 
 from datetime import datetime
+from uuid import UUID
 from typing import Optional
 
 from pydantic import BaseModel, Field
@@ -23,7 +24,7 @@ class SkillUpdate(BaseModel):
 
 
 class SkillResponse(BaseModel):
-    id: str
+    id: UUID
     name: str
     category: str
     proficiency: int

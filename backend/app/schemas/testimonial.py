@@ -1,6 +1,7 @@
 """Testimonial schemas."""
 
 from datetime import datetime
+from uuid import UUID
 from typing import Optional
 
 from pydantic import BaseModel
@@ -27,7 +28,7 @@ class TestimonialUpdate(BaseModel):
 
 
 class TestimonialResponse(BaseModel):
-    id: str
+    id: UUID
     author_name: str
     author_role: Optional[str] = None
     company: Optional[str] = None

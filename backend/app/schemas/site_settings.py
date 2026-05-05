@@ -1,6 +1,7 @@
 """SiteSettings schemas."""
 
 from datetime import datetime
+from uuid import UUID
 from typing import Optional
 
 from pydantic import BaseModel
@@ -16,7 +17,7 @@ class SiteSettingsUpdate(BaseModel):
 
 
 class SiteSettingsResponse(BaseModel):
-    id: str
+    id: UUID
     meta_title: str
     meta_description: str
     og_image: Optional[str] = None

@@ -1,5 +1,6 @@
 """Authentication schemas."""
 
+from uuid import UUID
 from pydantic import BaseModel, EmailStr
 
 
@@ -14,7 +15,7 @@ class TokenResponse(BaseModel):
 
 
 class UserResponse(BaseModel):
-    id: str
+    id: UUID
     email: str
     is_admin: bool
 

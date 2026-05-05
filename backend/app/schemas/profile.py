@@ -1,6 +1,7 @@
 """Profile schemas."""
 
 from datetime import date, datetime
+from uuid import UUID
 from typing import Optional
 
 from pydantic import BaseModel, EmailStr
@@ -19,7 +20,7 @@ class ProfileUpdate(BaseModel):
 
 
 class ProfileResponse(BaseModel):
-    id: str
+    id: UUID
     name: str
     bio: Optional[str] = None
     avatar_url: Optional[str] = None

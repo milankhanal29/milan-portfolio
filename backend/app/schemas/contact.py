@@ -1,6 +1,7 @@
 """Contact form schemas."""
 
 from datetime import datetime
+from uuid import UUID
 from typing import Optional
 
 from pydantic import BaseModel, EmailStr
@@ -14,7 +15,7 @@ class ContactMessageCreate(BaseModel):
 
 
 class ContactMessageResponse(BaseModel):
-    id: str
+    id: UUID
     name: str
     email: str
     subject: Optional[str] = None

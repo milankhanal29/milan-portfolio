@@ -2,6 +2,7 @@
 
 from datetime import date, datetime
 from typing import List, Optional
+from uuid import UUID
 
 from pydantic import BaseModel
 
@@ -31,7 +32,7 @@ class ExperienceUpdate(BaseModel):
 
 
 class ExperienceResponse(BaseModel):
-    id: str
+    id: UUID
     company: str
     role: str
     start_date: date
