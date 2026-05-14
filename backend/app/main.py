@@ -20,12 +20,12 @@ from app.database import async_session
 async def lifespan(app: FastAPI):
     """Application lifespan — startup and shutdown events."""
     # Startup
-    print(f"🚀 Starting {settings.APP_NAME} v{settings.APP_VERSION}")
+    print(f"APP: Starting {settings.APP_NAME} v{settings.APP_VERSION}")
     
     # Log configuration (masked)
     db_url_masked = settings.DATABASE_URL.split("@")[-1] if "@" in settings.DATABASE_URL else "..."
-    print(f"🔧 DB: ...@{db_url_masked}")
-    print(f"🌍 CORS: {settings.ALLOWED_ORIGINS}")
+    print(f"DB: ...@{db_url_masked}")
+    print(f"CORS: {settings.ALLOWED_ORIGINS}")
     
     await init_db()
     await init_redis()
@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
     try:
         async with async_session() as db:
             await create_admin_user(db, settings.ADMIN_EMAIL, settings.ADMIN_PASSWORD)
-            print(f"✅ Admin user ensured: {settings.ADMIN_EMAIL}")
+            print(f"SUCCESS: Admin user ensured: {settings.ADMIN_EMAIL}")
 
             # Ensure seed data if profile or projects are missing
             from app.services.profile_service import get_profile
@@ -45,14 +45,14 @@ async def lifespan(app: FastAPI):
             projects = await get_all(db, Project)
             
             if not profile or not projects:
-                print("🌱 Missing essential data, triggering database seed...")
+                print("SEED: Missing essential data, triggering database seed...")
                 from seed import seed as seed_db
                 await seed_db()
-                print("✅ Database seeded successfully")
+                print("SUCCESS: Database seeded successfully")
             else:
-                print("ℹ️ Database already contains data, skipping seed.")
+                print("INFO: Database already contains data, skipping seed.")
     except Exception as e:
-        print(f"❌ Error during startup/seeding: {str(e)}")
+        print(f"ERROR: Error during startup/seeding: {str(e)}")
         import traceback
         traceback.print_exc()
 
@@ -61,7 +61,7 @@ async def lifespan(app: FastAPI):
     # Shutdown
     await close_redis()
     await close_db()
-    print("👋 Application shutdown complete")
+    print("EXIT: Application shutdown complete")
 
 
 def create_app() -> FastAPI:
@@ -107,7 +107,7 @@ def create_app() -> FastAPI:
     from fastapi.responses import JSONResponse
     @app.exception_handler(Exception)
     async def global_exception_handler(request: Request, exc: Exception):
-        print(f"🔥 Global exception caught: {str(exc)}")
+        print(f"CRITICAL: Global exception caught: {str(exc)}")
         import traceback
         traceback.print_exc()
         

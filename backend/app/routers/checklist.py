@@ -20,7 +20,7 @@ async def get_db():
         yield session
 
 
-@router.get("/", response_model=List[Checklist])
+@router.get("", response_model=List[Checklist])
 async def get_checklists(db: AsyncSession = Depends(get_db)):
     """Fetch all checklists."""
     result = await db.execute(select(ChecklistModel).order_by(ChecklistModel.created_at))
@@ -37,7 +37,7 @@ async def get_checklist(checklist_id: uuid.UUID, db: AsyncSession = Depends(get_
     return checklist
 
 
-@router.post("/", response_model=Checklist, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=Checklist, status_code=status.HTTP_201_CREATED)
 async def create_checklist(
     checklist_in: ChecklistCreate,
     db: AsyncSession = Depends(get_db),
