@@ -1,0 +1,426 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 0;
+}
+
+.header {
+  background: linear-gradient(135deg, #002868 0%, #001540 60%, #0d0f1a 100%);
+  padding: 48px 32px 40px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid #ef3340;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239,51,64,0.15) 0%, transparent 70%);
+}
+
+.flagStripe {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.flagNp {
+  width: 24px;
+  height: 30px;
+  background: linear-gradient(to bottom, #003893 0%, #dc143c 100%);
+  clip-path: polygon(0 0, 100% 25%, 70% 55%, 100% 100%, 0 100%);
+  border-radius: 2px;
+}
+
+.flagCross {
+  width: 36px;
+  height: 24px;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ef3340;
+}
+
+.flagCross::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12px;
+  width: 6px;
+  height: 100%;
+  background: white;
+}
+
+.flagCross::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 100%;
+  height: 6px;
+  background: white;
+}
+
+.routeLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #f7c948;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+.headerTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 5vw, 38px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.headerTitle span {
+  color: #f7c948;
+}
+
+.headerDesc {
+  color: #8fa3c8;
+  font-size: 14px;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.progressWrap {
+  background: #181c27;
+  padding: 20px 32px;
+  border-bottom: 1px solid #2a3050;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.progressLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #7a85a3;
+  white-space: nowrap;
+}
+
+.progressBarBg {
+  flex: 1;
+  min-width: 120px;
+  height: 8px;
+  background: #2a3050;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #52d9a4, #4f8ef7);
+  transition: width 0.4s cubic-bezier(.4, 0, .2, 1);
+}
+
+.progressCount {
+  font-size: 13px;
+  font-weight: 700;
+  color: #52d9a4;
+  white-space: nowrap;
+}
+
+.resetBtn {
+  background: none;
+  border: 1px solid #2a3050;
+  color: #7a85a3;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resetBtn:hover {
+  border-color: #f76f6f;
+  color: #f76f6f;
+}
+
+.timeline {
+  display: flex;
+  gap: 0;
+  margin: 24px 0 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tlStep {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  padding: 10px 8px;
+  border-top: 3px solid #2a3050;
+  position: relative;
+  font-size: 11px;
+  color: #7a85a3;
+}
+
+.tlStep:nth-child(1) { border-top-color: #4f8ef7; color: #4f8ef7; }
+.tlStep:nth-child(2) { border-top-color: #f7c948; color: #f7c948; }
+.tlStep:nth-child(3) { border-top-color: #52d9a4; color: #52d9a4; }
+.tlStep:nth-child(4) { border-top-color: #ef3340; color: #f87171; }
+.tlStep:nth-child(5) { border-top-color: #a78bfa; color: #a78bfa; }
+
+.tlStep span {
+  display: block;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.phase {
+  margin-bottom: 36px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #2a3050;
+  background: #181c27;
+}
+
+.phaseHeader {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.phaseHeader:hover {
+  background: #1e2335;
+}
+
+.phaseNum {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.phaseTitle {
+  flex: 1;
+}
+
+.phaseTitle h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+}
+
+.phaseTitle p {
+  font-size: 12px;
+  color: #7a85a3;
+  margin-top: 2px;
+}
+
+.phaseBadge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.phaseChevron {
+  color: #7a85a3;
+  font-size: 16px;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.phase.collapsed .phaseChevron {
+  transform: rotate(-90deg);
+}
+
+.phaseBody {
+  padding: 0 20px 20px;
+}
+
+.phase.collapsed .phaseBody {
+  display: none;
+}
+
+.sectionLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #7a85a3;
+  padding: 16px 4px 8px;
+  border-bottom: 1px solid #2a3050;
+  margin-bottom: 6px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin: 4px 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.item:hover {
+  background: #1e2335;
+}
+
+.item.checked {
+  opacity: 0.55;
+}
+
+.item.checked .itemText {
+  text-decoration: line-through;
+  color: #7a85a3;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid #2a3050;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition: all 0.2s;
+  background: #0f1117;
+}
+
+.item.checked .checkbox {
+  background: #52d9a4;
+  border-color: #52d9a4;
+}
+
+.checkmark {
+  display: none;
+  color: #0f1117;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.item.checked .checkmark {
+  display: block;
+}
+
+.itemContent {
+  flex: 1;
+}
+
+.itemText {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e8ecf5;
+}
+
+.itemNote {
+  font-size: 11.5px;
+  color: #7a85a3;
+  margin-top: 3px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 99px;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.5px;
+}
+
+.tag-req { background: rgba(247,111,111,0.15); color: #f76f6f; }
+.tag-opt { background: rgba(79,142,247,0.12); color: #4f8ef7; }
+.tag-np { background: rgba(220,20,60,0.12); color: #f87171; }
+.tag-nor { background: rgba(0,40,104,0.4); color: #93c5fd; }
+
+.infoBox {
+  background: rgba(79,142,247,0.07);
+  border: 1px solid rgba(79,142,247,0.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 12px 0 6px;
+  font-size: 13px;
+  color: #8fa3c8;
+  line-height: 1.6;
+}
+
+.warnBox {
+  background: rgba(247,201,72,0.07);
+  border: 1px solid rgba(247,201,72,0.25);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 12px 0 6px;
+  font-size: 13px;
+  color: #c8b87a;
+  line-height: 1.6;
+}
+
+.footer {
+  text-align: center;
+  color: #7a85a3;
+  font-size: 12px;
+  padding: 40px 20px 60px;
+  line-height: 1.7;
+}
+
+.footer a {
+  color: #4f8ef7;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Phase color themes */
+.phase-1 .phaseNum { background: rgba(79,142,247,0.15); color: #4f8ef7; border: 1.5px solid #4f8ef7; }
+.phase-1 .phaseBadge { background: rgba(79,142,247,0.12); color: #4f8ef7; }
+.phase-1 .phaseHeader { border-left: 3px solid #4f8ef7; }
+
+.phase-2 .phaseNum { background: rgba(247,201,72,0.12); color: #f7c948; border: 1.5px solid #f7c948; }
+.phase-2 .phaseBadge { background: rgba(247,201,72,0.1); color: #f7c948; }
+.phase-2 .phaseHeader { border-left: 3px solid #f7c948; }
+
+.phase-3 .phaseNum { background: rgba(82,217,164,0.12); color: #52d9a4; border: 1.5px solid #52d9a4; }
+.phase-3 .phaseBadge { background: rgba(82,217,164,0.1); color: #52d9a4; }
+.phase-3 .phaseHeader { border-left: 3px solid #52d9a4; }
+
+.phase-4 .phaseNum { background: rgba(239,51,64,0.12); color: #ef3340; border: 1.5px solid #ef3340; }
+.phase-4 .phaseBadge { background: rgba(239,51,64,0.1); color: #ef3340; }
+.phase-4 .phaseHeader { border-left: 3px solid #ef3340; }
+
+.phase-5 .phaseNum { background: rgba(167,139,250,0.12); color: #a78bfa; border: 1.5px solid #a78bfa; }
+.phase-5 .phaseBadge { background: rgba(167,139,250,0.1); color: #a78bfa; }
+.phase-5 .phaseHeader { border-left: 3px solid #a78bfa; }

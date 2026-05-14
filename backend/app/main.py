@@ -132,8 +132,7 @@ def create_app() -> FastAPI:
     app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
     # Register routers
-    from app.routers import auth, profile, experiences, projects, blog, skills
-    from app.routers import testimonials, site_settings, contact, birthday, upload
+    from app.routers import testimonials, site_settings, contact, birthday, upload, checklist
 
     api_prefix = "/api/v1"
     app.include_router(auth.router, prefix=api_prefix)
@@ -147,6 +146,7 @@ def create_app() -> FastAPI:
     app.include_router(contact.router, prefix=api_prefix)
     app.include_router(birthday.router, prefix=api_prefix)
     app.include_router(upload.router, prefix=api_prefix)
+    app.include_router(checklist.router, prefix=api_prefix)
 
     # Health check
     @app.get("/health")

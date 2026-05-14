@@ -2,6 +2,7 @@
 
 import asyncio
 import uuid
+import json
 from datetime import date, datetime, timezone
 
 from app.database import async_session, init_db
@@ -13,6 +14,7 @@ from app.models.skill import Skill
 from app.models.testimonial import Testimonial
 from app.models.site_settings import SiteSettings
 from app.models.birthday import BirthdayEvent, MenuItem
+from app.models.checklist import Checklist as ChecklistModel
 from app.services.auth_service import create_admin_user
 from app.config import settings
 
@@ -24,7 +26,9 @@ async def seed():
     async with async_session() as db:
         # Admin user
         await create_admin_user(db, settings.ADMIN_EMAIL, settings.ADMIN_PASSWORD)
-        print("✅ Admin user created")        # Profile
+        print("✅ Admin user created")
+
+        # Profile
         profile = Profile(
             id=uuid.uuid4(),
             name="Milan Khanal",
@@ -189,6 +193,21 @@ async def seed():
         ]
         for item in menu_items:
             db.add(item)
+
+        # Checklist
+        try:
+            with open("C:/Users/milan/.gemini/antigravity/brain/21e0067f-e8ee-4c59-ad5b-6a1b3a963a20/checklist_data.json", "r") as f:
+                checklist_data = json.load(f)
+            
+            checklist = ChecklistModel(
+                id=uuid.uuid4(),
+                title="Norway Masters Checklist – Nepal to Oslo",
+                data=checklist_data
+            )
+            db.add(checklist)
+            print("✅ Checklist data seeded")
+        except Exception as e:
+            print(f"⚠️ Could not seed checklist data: {e}")
 
         await db.commit()
         print("✅ All seed data inserted successfully!")
