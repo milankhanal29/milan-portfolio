@@ -213,6 +213,25 @@ export interface Wish {
   created_at: string;
 }
 
+// === Checklist ===
+export interface Checklist {
+  id: string;
+  title: string;
+  data: any;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ChecklistCreate {
+  title: string;
+  data: any;
+}
+
+export interface ChecklistUpdate {
+  title?: string;
+  data?: any;
+}
+
 // === Admin Stats ===
 export interface AdminStats {
   total_blog_views: number;

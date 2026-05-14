@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './checklist.module.css';
+import { api } from '@/lib/api';
 
 interface Tag {
   text: string;
@@ -45,8 +46,7 @@ export default function ChecklistPage() {
     // Fetch checklist structure from backend
     const fetchChecklist = async () => {
       try {
-        const response = await fetch('/api/v1/checklist/');
-        const checklists = await response.json();
+        const checklists = await api.checklist.list();
         if (checklists && checklists.length > 0) {
           // Use the first checklist for now
           setData(checklists[0].data);

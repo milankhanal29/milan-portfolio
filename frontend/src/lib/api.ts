@@ -139,6 +139,16 @@ export const api = {
     deleteMenuItem: (id: string) => request(`/birthday/menu-items/${id}`, { method: "DELETE" }),
   },
 
+  checklist: {
+    list: () => request<import("@/types").Checklist[]>("/checklist"),
+    get: (id: string) => request<import("@/types").Checklist>(`/checklist/${id}`),
+    create: (data: import("@/types").ChecklistCreate) =>
+      request<import("@/types").Checklist>("/checklist", { method: "POST", body: JSON.stringify(data) }),
+    update: (id: string, data: import("@/types").ChecklistUpdate) =>
+      request<import("@/types").Checklist>(`/checklist/${id}`, { method: "PUT", body: JSON.stringify(data) }),
+    delete: (id: string) => request(`/checklist/${id}`, { method: "DELETE" }),
+  },
+
   upload: (file: File, folder?: string) => {
     const formData = new FormData();
     formData.append("file", file);
