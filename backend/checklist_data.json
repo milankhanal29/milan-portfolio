@@ -1,0 +1,204 @@
+{
+  "phases": [
+    {
+      "id": "phase1",
+      "title": "University Application Documents",
+      "description": "Documents required to apply to Oslo universities (UiO, OsloMet, BI, etc.)",
+      "badge": "Academic",
+      "info": "Application Window: Non-EU/EEA applicants (Nepal) typically apply November 1 – December 1 for autumn intake. Apply directly on each university's portal. Most Oslo universities use their own system; some use Søknadsweb.",
+      "sections": [
+        {
+          "label": "Academic Documents",
+          "items": [
+            {"text": "Bachelor's Degree Certificate", "note": "Original and scanned copy. Must be from a recognized institution.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Official Academic Transcripts (All Semesters)", "note": "Semester-wise mark sheets from your bachelor's university. Must show GPA/percentage.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "SLC / SEE Certificate (Grade 10)", "note": "National Examinations Board certificate. Required for Norwegian equivalency check.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "+2 / Higher Secondary Certificate (Grade 12)", "note": "NEB or Board certificate. Include transcript/marksheet.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Course Syllabus / Description", "note": "Many Norwegian universities request a detailed course description from your bachelor's to check equivalency. Request from your university registrar.", "tags": [{"text": "Required", "type": "req"}]}
+          ]
+        },
+        {
+          "label": "Language Proficiency",
+          "items": [
+            {"text": "IELTS Score Report (minimum 6.0–6.5 overall)", "note": "Academic IELTS preferred. UiO typically requires 6.5; OsloMet requires 6.0. Check your specific program.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "TOEFL iBT (minimum 90)", "note": "Accepted at most Oslo universities as an alternative to IELTS.", "tags": [{"text": "Alternative to IELTS", "type": "opt"}]},
+            {"text": "Medium of Instruction Certificate", "note": "Letter from your bachelor's university confirming that your degree was taught in English. May waive IELTS at some universities.", "tags": [{"text": "Sometimes accepted", "type": "opt"}]}
+          ]
+        },
+        {
+          "label": "Personal / Supporting Documents",
+          "items": [
+            {"text": "Statement of Purpose (SOP) / Motivation Letter", "note": "500–1000 words explaining your background, why this program, and your career goals.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Curriculum Vitae (CV) / Resume", "note": "Academic and work experience. Use European CV format preferred by Norwegian universities.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "2 Letters of Recommendation", "note": "From professors or employers. Should be on official letterhead, signed and dated. Some universities accept them uploaded online.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Valid Passport Copy (bio-data page)", "note": "Passport must be valid for at least 18 months from intended travel date.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Portfolio / Writing Sample", "note": "Required for design, architecture, journalism, or arts programs.", "tags": [{"text": "Program-specific", "type": "opt"}]},
+            {"text": "GRE / GMAT Score Report", "note": "Required only for specific programs (e.g., BI Norwegian Business School MBA). Confirm with your target program.", "tags": [{"text": "Program-specific", "type": "opt"}]},
+            {"text": "Research Proposal", "note": "Required for research-based masters. Usually 1,000–2,000 words outlining your research question and methodology.", "tags": [{"text": "Research programs", "type": "opt"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase2",
+      "title": "Document Attestation in Nepal",
+      "description": "Authentication process for Nepali documents — done before or after admission",
+      "badge": "Nepal Side",
+      "warn": "Important: Nepal is not a member of the Hague Apostille Convention, so documents cannot be apostilled. Instead, you must go through a multi-step consular legalization process. Allow 2–4 weeks for the full attestation chain.",
+      "sections": [
+        {
+          "label": "Step 1 — Verify at Issuing Authority",
+          "items": [
+            {"text": "SLC/SEE Certificate verified by NEB (National Examinations Board)", "note": "NEB Office, Sanothimi, Bhaktapur. Bring original + photocopy.", "tags": [{"text": "Nepal", "type": "np"}]},
+            {"text": "+2 Certificate verified by NEB / HSEB", "note": "Higher Secondary Education Board or NEB depending on year of completion.", "tags": [{"text": "Nepal", "type": "np"}]},
+            {"text": "Bachelor's Degree & Transcripts verified by Tribhuvan University (TU) Registrar / your university", "note": "Bring originals. TU Registrar Office, Kirtipur. Other universities (PU, KU, etc.) have their own registrar offices.", "tags": [{"text": "Nepal", "type": "np"}]},
+            {"text": "Character Certificate from university", "note": "Request from your university's Dean's office or Registrar.", "tags": [{"text": "Nepal", "type": "np"}]}
+          ]
+        },
+        {
+          "label": "Step 2 — Ministry of Education Attestation",
+          "items": [
+            {"text": "Educational documents attested by Ministry of Education, Science & Technology (MoEST)", "note": "Kesharmahal, Kathmandu. Required for all academic certificates after university-level verification.", "tags": [{"text": "Nepal", "type": "np"}]}
+          ]
+        },
+        {
+          "label": "Step 3 — Ministry of Foreign Affairs (MoFA) Attestation",
+          "items": [
+            {"text": "All attested documents legalized by Department of Consular Services, MoFA", "note": "MoFA, Tripureshwor, Kathmandu. This is the final Nepal-side stamp. Required for all academic, personal, and civil documents.", "tags": [{"text": "Nepal", "type": "np"}]},
+            {"text": "Birth Certificate attested by MoFA (if required by university)", "note": "Get it from your local banner office first, then municipality, then MoFA.", "tags": [{"text": "Nepal", "type": "np"}]},
+            {"text": "Citizenship Certificate copy attested by MoFA", "note": "Bring original citizenship + copy. Municipality verification may be needed first.", "tags": [{"text": "Nepal", "type": "np"}]}
+          ]
+        },
+        {
+          "label": "Step 4 — Notarization (if needed)",
+          "items": [
+            {"text": "Notarize documents at a registered Notary Public Nepal (if originals cannot be sent)", "note": "For certified true copies when you cannot submit originals. Notarized copies must still go through MoFA.", "tags": [{"text": "If required", "type": "opt"}]}
+          ]
+        },
+        {
+          "label": "Step 5 — Translation",
+          "items": [
+            {"text": "Certified English translation of any Nepali-language documents", "note": "Norwegian authorities require documents in English or Norwegian. Use a certified translator. Most academic docs from Nepal are already in English.", "tags": [{"text": "Nepal", "type": "np"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase3",
+      "title": "After University Admission Approval",
+      "description": "Documents to arrange once you receive your official offer letter from Oslo",
+      "badge": "Post-Admission",
+      "info": "Congratulations on your offer! Once you receive your conditional or unconditional offer letter from your Oslo university, you move to the residence permit application. You apply online via UDI (udi.no) before submitting physical documents at VFS Global Kathmandu.",
+      "sections": [
+        {
+          "label": "From the University (Norway side)",
+          "items": [
+            {"text": "Official Admission / Offer Letter from Oslo University", "note": "Must state: full-time status, program name, duration, and start date. Without this, UDI application cannot proceed.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Tuition Fee Receipt / Confirmation of Payment", "note": "Proof that semester/annual tuition has been paid or waived (if applicable). Non-EU/EEA students pay tuition at most Oslo universities.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Accommodation Confirmation Letter", "note": "From the university's student housing (SiO for UiO/OsloMet) or a private rental agreement in Oslo showing your name and address.", "tags": [{"text": "Required", "type": "req"}]}
+          ]
+        },
+        {
+          "label": "Financial Documentation",
+          "items": [
+            {"text": "Bank Statement showing min. NOK 166,859 (≈NPR 2.1 million) for 2025/26", "note": "Must be in your name. Funds should be present for 3–6 months (not freshly deposited). UDI requires this amount to be documented before granting a student permit.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Bank Letter / Certificate from your Nepali bank", "note": "Official letter on bank letterhead confirming account balance. Must be recent (within 1 month of application).", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Sponsor's Bank Statement + Financial Guarantee Letter (if self-funded is insufficient)", "note": "If a parent or guardian is sponsoring you, include their bank statement + a notarized financial guarantee letter + proof of relationship (birth certificate).", "tags": [{"text": "If applicable", "type": "opt"}]},
+            {"text": "Scholarship Award Letter (if applicable)", "note": "From scholarship body (e.g., Quota Scheme, NORPART, etc.). Must specify amount and duration.", "tags": [{"text": "If applicable", "type": "opt"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase4",
+      "title": "VFS Global Submission (Kathmandu)",
+      "description": "Norway Student Residence Permit — documents to physically submit at VFS Kathmandu",
+      "badge": "Visa / Permit",
+      "warn": "Process: First register and pay online at udi.no, then book an appointment at VFS Kathmandu (Lagankhel, Lalitpur). Applications are forwarded to the Royal Norwegian Embassy, New Delhi for processing. Allow 48–72 hours transit time + up to 3 months processing. VFS service fee: 27 EUR (≈NPR 3,900). UDI fee: NOK 5,900 (~NPR 90,000).",
+      "sections": [
+        {
+          "label": "Identity Documents",
+          "items": [
+            {"text": "Original Valid Passport", "note": "Must have at least 18 months validity from application date. Must have at least 1 blank page. Bring old passports if any.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Passport-size Photos — 2 recent (35×45mm, white/grey background)", "note": "Taken within last 6 months. Unedited. Head should be 80% of the frame. Neutral expression, look at camera. One glued to form, one attached with paperclip (name on back).", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Nepali Citizenship Certificate (original + copy)", "note": "Bring both sides. Certified copy may be needed.", "tags": [{"text": "Required", "type": "req"}]}
+          ]
+        },
+        {
+          "label": "UDI Application Documents",
+          "items": [
+            {"text": "UDI Online Application Summary / Confirmation printout", "note": "Generated after completing your application on udi.no. Print and bring to VFS appointment.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "UDI Signature Letter (Cover Letter)", "note": "Auto-generated by UDI portal after submission. Must be signed and submitted at VFS.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "UDI Application Fee Payment Receipt (NOK 5,900)", "note": "Paid online at udi.no before booking VFS appointment.", "tags": [{"text": "Required", "type": "req"}]}
+          ]
+        },
+        {
+          "label": "Academic & Admission Documents",
+          "items": [
+            {"text": "Official Admission Letter from Oslo University", "note": "Must confirm full-time status, program, start date. Original or certified copy.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Bachelor's Degree Certificate (MoFA attested)", "note": "With all attestation stamps from Phase 2.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Academic Transcripts (MoFA attested)", "note": "All semester transcripts, attested and in English.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "English Language Test Result (IELTS/TOEFL)", "note": "Original TRF or score report. Not required to be attested.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Tuition Fee Payment Confirmation", "note": "From the university showing tuition for at least one semester/year is paid.", "tags": [{"text": "Required", "type": "req"}]}
+          ]
+        },
+        {
+          "label": "Financial Documents",
+          "items": [
+            {"text": "Bank Statement (last 6 months, showing ≥ NOK 166,859)", "note": "From a recognized Nepali bank. Must show account holder name, account number, and sufficient balance. Must be recent (within 1 month).", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Bank Certificate / Balance Confirmation Letter", "note": "On bank letterhead, signed by bank manager. Must state current balance.", "tags": [{"text": "Required", "type": "req"}]},
+            {"text": "Sponsor's documents (if applicable): bank statement + guarantee letter + relationship proof", "note": "Parents' bank statement, their notarized financial guarantee letter, and your birth certificate or relationship certificate attested by MoFA.", "tags": [{"text": "If applicable", "type": "opt"}]}
+          ]
+        },
+        {
+          "label": "Accommodation & Housing",
+          "items": [
+            {"text": "Accommodation Proof in Norway", "note": "Student housing letter (e.g., SiO confirmation) or private tenancy agreement in Oslo showing your name and address.", "tags": [{"text": "Required", "type": "req"}]}
+          ]
+        },
+        {
+          "label": "Personal Documents",
+          "items": [
+            {"text": "Covering / Personal Letter explaining study plans, funding, and return intent", "note": "1 page. Explain why you chose Norway, your financial situation, and your plans after graduation. Strengthens your application.", "tags": [{"text": "Recommended", "type": "opt"}]},
+            {"text": "Birth Certificate (MoFA attested)", "note": "Useful for identity verification. Bring along even if not specifically requested.", "tags": [{"text": "Recommended", "type": "opt"}]},
+            {"text": "Police Clearance Certificate (Nepal)", "note": "From Nepal Police, Naxal, Kathmandu. Some applications require it. Best to have it ready. Must be attested by MoFA.", "tags": [{"text": "May be required", "type": "opt"}]},
+            {"text": "Health Insurance Documentation", "note": "Private travel/health insurance valid from arrival until registered with Norwegian National Insurance Scheme. UDI may require proof for first 12 months.", "tags": [{"text": "Recommended", "type": "opt"}]},
+            {"text": "VFS Service Fee payment: 27 EUR (paid at VFS counter, cash or card)", "note": "VFS Global Kathmandu, Academy of Culinary Arts Building, Ground Floor, Mahalaxmisthan Marga, Lagankhel, Lalitpur.", "tags": [{"text": "Required", "type": "req"}]}
+          ]
+        },
+        {
+          "label": "Biometrics (at VFS Appointment)",
+          "items": [
+            {"text": "Biometrics (fingerprints + photo) — provided in person at VFS", "note": "Mandatory physical presence at VFS Kathmandu. Norway Residence Case biometrics have been mandatory since March 2021. Applicants must appear in person.", "tags": [{"text": "Required", "type": "req"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase5",
+      "title": "After Arrival in Oslo",
+      "description": "What to do once you land in Norway with your residence permit",
+      "badge": "In Norway",
+      "info": "After you arrive: Your residence permit card will be waiting or will be issued by the local police in Oslo. Complete these steps within the first weeks of arrival.",
+      "sections": [
+        {
+          "label": "Registration & Identity",
+          "items": [
+            {"text": "Collect Residence Permit Card from Oslo Police / UDI", "note": "Book appointment at Oslo Police District (Grønland politistasjon or as directed by UDI letter).", "tags": [{"text": "Norway", "type": "nor"}]},
+            {"text": "Register Norwegian address at local municipality (Folkeregisteret)", "note": "Required within 8 days of arrival if staying more than 6 months.", "tags": [{"text": "Norway", "type": "nor"}]},
+            {"text": "Apply for Norwegian National ID Number (D-number or Personal Number) at Skatteetaten", "note": "Tax office (Skatt øst for Oslo). Bring passport + residence permit card. Needed for bank account and university enrollment.", "tags": [{"text": "Norway", "type": "nor"}]},
+            {"text": "Open Norwegian Bank Account (DNB, Sbanken, etc.)", "note": "Requires your residence permit card + D-number/Personal Number. Needed to receive SiO deposit refunds, scholarships, part-time wages.", "tags": [{"text": "Norway", "type": "nor"}]}
+          ]
+        },
+        {
+          "label": "University Enrollment",
+          "items": [
+            {"text": "Present original academic documents to university upon request", "note": "Universities may request originals at enrollment. Failing to present authentic originals can result in withdrawal of admission.", "tags": [{"text": "Norway", "type": "nor"}]},
+            {"text": "Pay Semester Fee (≈NOK 1,000) to student welfare org (SiO / Studentsamskipnad)", "note": "Required each semester. Gives access to student housing, healthcare, sports, and food services.", "tags": [{"text": "Norway", "type": "nor"}]},
+            {"text": "Register with Norwegian National Insurance Scheme (Helfo) for healthcare access", "note": "After getting your Personal Number. Entitles you to subsidized healthcare at Norwegian rates.", "tags": [{"text": "Norway", "type": "nor"}]}
+          ]
+        }
+      ]
+    }
+  ]
+}

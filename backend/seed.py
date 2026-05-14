@@ -26,7 +26,7 @@ async def seed():
     async with async_session() as db:
         # Admin user
         await create_admin_user(db, settings.ADMIN_EMAIL, settings.ADMIN_PASSWORD)
-        print("✅ Admin user created")
+        print("SUCCESS: Admin user created")
 
         # Profile
         profile = Profile(
@@ -194,9 +194,10 @@ async def seed():
         for item in menu_items:
             db.add(item)
 
-        # Checklist
         try:
-            with open("C:/Users/milan/.gemini/antigravity/brain/21e0067f-e8ee-4c59-ad5b-6a1b3a963a20/checklist_data.json", "r") as f:
+            import os
+            data_file = os.path.join(os.path.dirname(__file__), "checklist_data.json")
+            with open(data_file, "r") as f:
                 checklist_data = json.load(f)
             
             checklist = ChecklistModel(
@@ -205,12 +206,12 @@ async def seed():
                 data=checklist_data
             )
             db.add(checklist)
-            print("✅ Checklist data seeded")
+            print("SUCCESS: Checklist data seeded")
         except Exception as e:
-            print(f"⚠️ Could not seed checklist data: {e}")
+            print(f"WARNING: Could not seed checklist data: {e}")
 
         await db.commit()
-        print("✅ All seed data inserted successfully!")
+        print("SUCCESS: All seed data inserted successfully!")
 
 
 if __name__ == "__main__":
