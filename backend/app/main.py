@@ -132,7 +132,20 @@ def create_app() -> FastAPI:
     app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
     # Register routers
-    from app.routers import testimonials, site_settings, contact, birthday, upload, checklist
+    from app.routers import (
+        auth,
+        profile,
+        experiences,
+        projects,
+        blog,
+        skills,
+        testimonials,
+        site_settings,
+        contact,
+        birthday,
+        upload,
+        checklist,
+    )
 
     api_prefix = "/api/v1"
     app.include_router(auth.router, prefix=api_prefix)
