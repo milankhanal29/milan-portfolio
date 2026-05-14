@@ -126,10 +126,10 @@ export function Footer() {
             © {new Date().getFullYear()} Milan Khanal. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <a href="https://github.com/milankhanal" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors text-sm">
+            <a href="https://github.com/milankhanal29" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors text-sm">
               GitHub
             </a>
-            <a href="https://linkedin.com/in/milankhanal" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors text-sm">
+            <a href="https://linkedin.com/in/milankhanal29" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors text-sm">
               LinkedIn
             </a>
             <a href="mailto:hello@khanalmilan.com.np" className="text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors text-sm">
